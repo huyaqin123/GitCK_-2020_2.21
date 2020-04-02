@@ -22,4 +22,21 @@ public class PageController {
     public String toLogin(){
         return "user/login";
     }
+
+    /**
+     * 跳转到商品列表页面
+     * @return
+     */
+    @RequestMapping("/toList")
+    public String toList(){
+        return "detail/list";
+    }
+    /**
+     * 跳转到商品详情页面
+     * @return
+     */
+    @RequestMapping("/toDetail")
+    public String toDetail(){
+        return "detail/detail";
+    }
 }

@@ -11,10 +11,7 @@ public class MyWebMVCConfiguration implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        //注册默认欢迎页面
-        registry.addViewController("/").setViewName("index");
-        registry.addViewController("/index").setViewName("index");
-        registry.addViewController("/index.html").setViewName("index");
+
     }
 
     /**
