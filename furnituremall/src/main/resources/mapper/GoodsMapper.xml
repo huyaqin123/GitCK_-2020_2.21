@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bdqn.mall.dao.GoodsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.bdqn.mall.entity.Goods">
+        <id column="id" property="id" />
+        <result column="typeId" property="typeId" />
+        <result column="goodsName" property="goodsName" />
+        <result column="inventory" property="inventory" />
+        <result column="supply" property="supply" />
+        <result column="price" property="price" />
+        <result column="discount" property="discount" />
+        <result column="vipPricec" property="vipPricec" />
+        <result column="introduction" property="introduction" />
+        <result column="volume" property="volume" />
+        <result column="viewed" property="viewed" />
+        <result column="picture" property="picture" />
+        <result column="storagetime" property="storagetime" />
+        <result column="is_shelf" property="isShelf" />
+        <result column="shelfTime" property="shelfTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, typeId, goodsName, inventory, supply, price, discount, vipPricec, introduction, volume, viewed, picture, storagetime, is_shelf, shelfTime
+    </sql>
+
+</mapper>
