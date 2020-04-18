@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<div th:replace="common/head::mall_head"></div>
+<div th:replace="mall/common/head::mall_head"></div>
 
 <!--轮播图-->
 <div class="layui-fulid">
@@ -26,7 +26,7 @@
         <p class="house-title">热门分类</p>
         <div class="layui-row">
             <div class="layui-col-xs4 cateFir cate">
-                <a href="/toList">
+                <a href="list.html">
                     <img src="/resource/img/home_img1.png">
                     <div>
                         <p>家居用品</p>
@@ -219,7 +219,8 @@
     </div>
 </div>
 
-<div th:replace="common/foot::mall_foot"></div>
+<div th:replace="mall/common/foot::mall_foot"></div>
+
 <script src="/resource/layui/layui.js"></script>
 <script src="/resource/js/jquery.js"></script>
 <script src="/resource/js/head.js"></script>

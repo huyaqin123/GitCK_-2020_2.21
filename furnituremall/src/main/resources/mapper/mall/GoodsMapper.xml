@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bdqn.mall.mall.dao.GoodsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.bdqn.mall.mall.entity.Goods">
+        <id column="id" property="id" />
+        <result column="typeIdOne" property="typeIdOne" />
+        <result column="typeIdTwo" property="typeIdTwo" />
+        <result column="typeId" property="typeId" />
+        <result column="goodsName" property="goodsName" />
+        <result column="introduction" property="introduction" />
+        <result column="goodsImg" property="goodsImg" />
+        <result column="inventory" property="inventory" />
+        <result column="supply" property="supply" />
+        <result column="oPrice" property="oPrice" />
+        <result column="rPrice" property="rPrice" />
+        <result column="volume" property="volume" />
+        <result column="viewed" property="viewed" />
+        <result column="storageTime" property="storageTime" />
+        <result column="is_shelf" property="isShelf" />
+        <result column="shelfTime" property="shelfTime" />
+        <result column="providerId" property="providerId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, typeIdOne, typeIdTwo, typeId, goodsName, introduction, goodsImg, inventory, supply, oPrice, rPrice, volume, viewed, storageTime, is_shelf, shelfTime, providerId
+    </sql>
+
+    <select id="findGoodsListByPage" resultType="com.bdqn.mall.mall.entity.Goods">
+        SELECT g.*,t.`typename` goodsTypeName,p.providername FROM goods g
+        INNER JOIN TYPE t ON t.id = g.typeId
+        INNER JOIN goods_provider p ON p.id = g.providerId
+        <where>
+            <if test="goods.providerId!=null">
+                and g.providerid = #{goods.providerId}
+            </if>
+            <if test="goods.goodsName!=null and goods.goodsName!=''">
+                and g.goodsName like concat('%', #{goods.goodsName},'%')
+            </if>
+            <if test="goods.typeId!=null">
+                and g.typeId = #{goods.typeId}
+            </if>
+            <if test="goods.typeIdTwo!=null">
+                and g.typeIdTwo = #{goods.typeIdTwo}
+            </if>
+            <if test="goods.typeIdOne!=null">
+                and g.typeIdOne = #{goods.typeIdOne}
+            </if>
+        </where>
+        order by g.id
+    </select>
+    <!--根据typeIdOne查询商品-->
+    <select id="findGoodsTypeIdNoe" resultType="com.bdqn.mall.mall.entity.Goods">
+         SELECT id,goodsName,goodsImg,oPrice,volume,shelfTime FROM goods  where typeIdOne =#{typeIdOne} order by shelfTime
+    </select>
+</mapper>

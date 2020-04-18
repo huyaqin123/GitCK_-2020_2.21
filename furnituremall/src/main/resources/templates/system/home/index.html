@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>家具商城后台管理</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/resource/layui/css/layui.css">
+    <style>
+        .user-photo{width: 200px; height: 120px; padding:15px 0 5px;}
+        .user-photo a.img{ display: block; width:80px; height:80px; margin: 0 auto 10px;}
+        .user-photo a.img img{ display: block; border: none; width: 100%; height: 100%; border-radius: 50%; -webkit-border-radius: 50%; -moz-border-radius: 50%; border: 4px solid #44576b; box-sizing:border-box;}
+        .user-photo p{ display: block; width: 100%; height: 25px; color: #ffffff; text-align: center; font-size: 12px; white-space: nowrap;line-height: 25px; overflow: hidden;}
+    </style>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo"><a href="/" style="color: white">家具商城-后台管理</a></div>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;" >
+                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img"/>小夕
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="javascript:;" data-url="page/user/userInfo.html"><i
+                            class="seraph icon-ziliao" data-icon="icon-ziliao"></i><cite>个人资料</cite></a>
+                    </dd>
+                    <dd><a href="javascript:;" data-url="page/user/changePwd.html"><i
+                            class="seraph icon-xiugai" data-icon="icon-xiugai"></i><cite>修改密码</cite></a>
+                    </dd>
+                    <dd><a href="../../../resources/page/login/login.html" class="signOut"><i
+                            class="seraph icon-tuichu"></i><cite>退出</cite></a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black" style="overflow-y:hidden">
+        <div class="user-photo" >
+            <a class="img" title="我的头像" ><img src="/resource/images/face.jpg"  class="userAvatar"></a>
+            <p>你好！<span class="userName">小夕</span>, 欢迎登录</p>
+        </div>
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;"><i class="layui-icon">&#xe68e;</i>后台首页</a>
+                </li>
+                <!-- 导航菜单项1 -->
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;"><i class="layui-icon">&#xe857;</i>基础设置</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:openPage('/system/toTypeManager')"> <i class="layui-icon">&#xe62a;</i>商品类型管理</a></dd>
+                        <dd><a href="javascript:openPage('/system/toSupplierManager')"> <i class="layui-icon">&#xe658;</i>供应商管理</a></dd>
+                        <dd><a href="javascript:openPage('/system/toGoodsManager')"> <i class="layui-icon">&#xe657;</i>商品管理</a></dd>
+                        <dd><a href="javascript:openPage('userManage.html')"> <i class="layui-icon">&#xe698;</i>订单管理</a></dd>
+                        <dd><a href="javascript:openPage('commentManage.html')"> <i class="layui-icon">&#xe63a;</i>评论管理</a></dd>
+                    </dl>
+                </li>
+
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;"><i class="layui-icon">&#xe645;</i>进货管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:openPage('/admin/toBlogTypeManager')"> <i class="layui-icon">&#xe756;</i>进货入库</a></dd>
+                        <dd><a href="javascript:openPage('/system/toTypeManager')"> <i class="layui-icon">&#xe65a;</i>退货出库</a></dd>
+                        <dd><a href="javascript:openPage('/system/toGoodsManager')"> <i class="layui-icon">&#xe615;</i>进货单据查询</a></dd>
+                        <dd><a href="javascript:openPage('userManage.html')"> <i class="layui-icon">&#xe615;</i>退货单据查询</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;"><i class="layui-icon">&#xe611;</i>销售管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:openPage('/admin/toBlogTypeManager')"> <i class="layui-icon">&#xe65b;</i>销售出库</a></dd>
+                        <dd><a href="javascript:openPage('/system/toTypeManager')"> <i class="layui-icon">&#xe770;</i>客户退货</a></dd>
+                        <dd><a href="javascript:openPage('/system/toGoodsManager')"> <i class="layui-icon">&#xe615;</i>销售单据查询</a></dd>
+                        <dd><a href="javascript:openPage('userManage.html')"> <i class="layui-icon">&#xe615;</i>客户退货查询</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;"><i class="layui-icon">&#xe60a;</i>库存管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:openPage('/admin/toBlogTypeManager')"> 库存查询</a></dd>
+                        <dd><a href="javascript:openPage('/system/toTypeManager')"> 商品报溢</a></dd>
+                        <dd><a href="javascript:openPage('/system/toGoodsManager')"> 库存报警</a></dd>
+                        <dd><a href="javascript:openPage('userManage.html')">商品报损</a></dd>
+                    </dl>
+                </li>
+                <!-- 导航菜单项2 -->
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><i class="layui-icon">&#xe614;</i>系统管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:showModifyPasswordDialog();"><i class="layui-icon">&#xe683;</i>修改密码</a></dd>
+                        <dd><a href="javascript:logout();"><i class="layui-icon">&#xe682;</i>安全退出</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 内联框架 -->
+    <div class="layui-body">
+        <iframe id="pageFrame" frameborder="0" scrolling="auto" style="width:100%;height:98%" src="/admin/default.html"></iframe>
+        <div class="layui-footer footer">
+            <p><span style="margin-left: 600px;">&copy家居商城系统管理</span></p>
+        </div>
+    </div>
+
+
+</div>
+<script src="/resource/layui/layui.js"></script>
+<script src="/resource/layui/js/jquery.js"></script>
+<script>
+    layui.use(['element','laypage','form','jquery'], function(){
+        var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+        var $ = layui.jquery; // 使用jquery
+        var laypage = layui.laypage;
+        var form = layui.form;
+    });
+
+    /**
+     * 打开新选项卡
+     * @param page
+     */
+    function openPage(page){
+        $("#pageFrame").attr("src",page);
+    }
+
+    function showModifyPasswordDialog(){
+        layer.open({
+            type: 2,
+            title: '修改密码',
+            area: ['480px', '400px'],
+            content: '/admin/modifyPassword.html' //iframe的url
+        });
+    }
+
+    function logout(){
+        layer.confirm("您确定退出系统吗", {
+            title:"系统提示"
+            ,btn: ['确定','取消'] //按钮
+        }, function(){
+            window.location.href="/admin/user/logout";
+        }, function(){
+
+        });
+    }
+
+
+</script>
+
+</body>
+</html>

@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.bdqn.mall.dao")
+@MapperScan("com.bdqn.mall.*.dao")
 public class FurnituremallApplication {
 
     public static void main(String[] args) {
